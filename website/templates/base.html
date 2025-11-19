@@ -25,7 +25,17 @@
       </div>
     </div>
   </nav>
-
+  {% with message = get _flashed_message(with_categories=true)%}
+  {% if message %}
+    {% for category, text in message %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ text }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+  {% endwith %}
 
 
 
